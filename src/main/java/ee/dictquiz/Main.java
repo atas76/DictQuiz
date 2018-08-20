@@ -30,8 +30,25 @@ public class Main {
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
+            System.exit(1);
         } catch (IOException ex) {
             ex.printStackTrace();
+            System.exit(2);
+        }
+
+        try {
+
+            if (args.length >= 3) {
+
+                int size = Integer.parseInt(args[2]);
+
+                Collections.shuffle(lines);
+                lines = lines.subList(0, size);
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.print("Size should be number");
+            System.exit(3);
         }
 
         playQuiz(lines, args[1]);
